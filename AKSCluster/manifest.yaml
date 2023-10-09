@@ -1,0 +1,32 @@
+# yaml-language-server: $schema=https://github.com/Azure/deployment-environments/releases/download/2022-11-11-preview/manifest.schema.json
+name: AKSCluster
+version: 1.0.0
+summary: AKS Cluster
+description: Deploys an AKS Cluster
+runner: ARM
+templatePath: azuredeploy.json
+
+parameters:
+  - id: clusterName
+    name: 'Cluster Name'
+    description: 'The name of the Managed Cluster resource.'
+    type: string
+    required: true
+
+  - id: dnsPrefix
+    name: 'DNS Prefix'
+    description: 'DNS prefix to use with hosted Kubernetes API server FQDN.'
+    type: string
+    required: true
+
+  - id: linuxAdminUsername
+    name: 'Linux Admin Username'
+    description: 'User name for the Linux Virtual Machines.'
+    type: string
+    required: true
+
+  - id: sshRSAPublicKey
+    name: 'SSH RSA Public Key'
+    description: 'Configure all linux machines with the SSH RSA public key string. Your key should include three parts, for example ssh-rsa AAAAB...snip...UcyupgH azureuser@linuxvm'
+    type: string
+    required: true

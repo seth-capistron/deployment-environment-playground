@@ -99,12 +99,38 @@
           }
         }
       }
+    },
+    {
+      "type": "Microsoft.Resources/deploymentScripts",
+      "apiVersion": "2020-10-01",
+      "name": "runPowerShellInlineWithOutput",
+      "location": "[resourceGroup().location]",
+      "kind": "AzurePowerShell",
+      "properties": {
+        "forceUpdateTag": "[parameters('utcValue')]",
+        "azPowerShellVersion": "8.3",
+        "scriptContent": "
+          param([string] $name)
+          $output = \"Hello {0}\" -f $name
+          Write-Output $output
+          $DeploymentScriptOutputs = @{}
+          $DeploymentScriptOutputs['text'] = $output
+        ",
+        "arguments": "[concat('-name', ' ', parameters('clusterName'))]",
+        "timeout": "PT5M",
+        "cleanupPreference": "OnSuccess",
+        "retentionInterval": "P1D"
+      }
     }
   ],
   "outputs": {
     "controlPlaneFQDN": {
       "type": "string",
       "value": "[reference(resourceId('Microsoft.ContainerService/managedClusters', parameters('clusterName'))).fqdn]"
+    },
+    "result": {
+      "value": "[reference('runPowerShellInlineWithOutput').outputs.text]",
+      "type": "string"
     }
   }
 }

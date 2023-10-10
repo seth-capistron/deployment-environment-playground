@@ -105,29 +105,29 @@
       }
     },
     {
-            "type": "Microsoft.Resources/deploymentScripts",
-            "apiVersion": "2020-10-01",
-            "name": "runPowerShellInlineWithOutput",
+      "type": "Microsoft.Resources/deploymentScripts",
+      "apiVersion": "2020-10-01",
+      "name": "runPowerShellInlineWithOutput",
       "dependsOn": [
         "parameters('clusterName')"
-      ]
-            "location": "[resourceGroup().location]",
-            "kind": "AzureCLI",
-            "identity": {
-                "type": "userAssigned",
-                "userAssignedIdentities": {
-                    "/subscriptions/a6bea3d8-32e4-4c26-97fd-ce073812f0ec/resourcegroups/Deployment-Environment-Playground/providers/Microsoft.ManagedIdentity/userAssignedIdentities/DeploymentScriptIdentity": {}
-                }
-            },
-            "properties": {
-                "forceUpdateTag": "[parameters('utcValue')]",
-                "azCliVersion": "2.47.0",
-                "scriptContent": "[format('az aks command invoke --resource-group {0} --name {1} --command \"kubectl run nginx --image nginx:latest\"', resourceGroup().name, parameters('clusterName'))]",
-                "timeout": "PT5M",
-                "cleanupPreference": "OnExpiration",
-                "retentionInterval": "P1D"
-            }
+      ],
+      "location": "[resourceGroup().location]",
+      "kind": "AzureCLI",
+      "identity": {
+        "type": "userAssigned",
+        "userAssignedIdentities": {
+          "/subscriptions/a6bea3d8-32e4-4c26-97fd-ce073812f0ec/resourcegroups/Deployment-Environment-Playground/providers/Microsoft.ManagedIdentity/userAssignedIdentities/DeploymentScriptIdentity": {}
         }
+      },
+      "properties": {
+        "forceUpdateTag": "[parameters('utcValue')]",
+        "azCliVersion": "2.47.0",
+        "scriptContent": "[format('az aks command invoke --resource-group {0} --name {1} --command \"kubectl run nginx --image nginx:latest\"', resourceGroup().name, parameters('clusterName'))]",
+        "timeout": "PT5M",
+        "cleanupPreference": "OnExpiration",
+        "retentionInterval": "P1D"
+        }
+    }
   ],
   "outputs": {
     "controlPlaneFQDN": {

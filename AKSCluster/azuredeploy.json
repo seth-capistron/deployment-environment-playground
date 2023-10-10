@@ -109,13 +109,7 @@
       "properties": {
         "forceUpdateTag": "[parameters('utcValue')]",
         "azPowerShellVersion": "8.3",
-        "scriptContent": "
-          param([string] $name)
-          $output = \"Hello {0}\" -f $name
-          Write-Output $output
-          $DeploymentScriptOutputs = @{}
-          $DeploymentScriptOutputs['text'] = $output
-        ",
+        "scriptContent": "param([string] $name); $output = \"Hello {0}\" -f $name; Write-Output $output; $DeploymentScriptOutputs = @{}; $DeploymentScriptOutputs['text'] = $output;",
         "arguments": "[concat('-name', ' ', parameters('clusterName'))]",
         "timeout": "PT5M",
         "cleanupPreference": "OnSuccess",

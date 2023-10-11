@@ -116,7 +116,7 @@
       "identity": {
         "type": "userAssigned",
         "userAssignedIdentities": {
-          "/subscriptions/a6bea3d8-32e4-4c26-97fd-ce073812f0ec/resourcegroups/Deployment-Environment-Playground/providers/Microsoft.ManagedIdentity/userAssignedIdentities/DeploymentScriptIdentity": {}
+          "/subscriptions/a6bea3d8-32e4-4c26-97fd-ce073812f0ec/resourcegroups/NeutronDevCenter/providers/Microsoft.ManagedIdentity/userAssignedIdentities/NeutronDevDeploymentIdentity": {}
         }
       },
       "properties": {

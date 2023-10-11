@@ -123,7 +123,7 @@
         "forceUpdateTag": "[parameters('utcValue')]",
         "azCliVersion": "2.47.0",
         "scriptContent": "[format('az aks command invoke --resource-group {0} --name {1} --command \"kubectl run nginx --image nginx:latest\"', resourceGroup().name, parameters('clusterName'))]",
-        "timeout": "PT5M",
+        "timeout": "PT20M",
         "cleanupPreference": "OnExpiration",
         "retentionInterval": "P1D"
         }

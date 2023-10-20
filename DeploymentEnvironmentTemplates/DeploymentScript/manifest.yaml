@@ -1,0 +1,14 @@
+# yaml-language-server: $schema=https://github.com/Azure/deployment-environments/releases/download/2022-11-11-preview/manifest.schema.json
+name: DeploymentScript
+version: 1.0.0
+summary: Deployment Script
+description: Deploys a minimally funcation Deployment Script
+runner: ARM
+templatePath: azuredeploy.json
+
+parameters:
+  - id: name
+    name: 'Name'
+    description: 'The name to say hello to.'
+    type: string
+    default: 'Frank'
